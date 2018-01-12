@@ -15,10 +15,9 @@ show_map = True
 # If True, EXIF data from the original image is copied to the resized image
 # copy_exif_data = False
 
-# Jpeg options
-# jpg_options = {'quality': 85,
-#                'optimize': True,
-#                'progressive': True}
+jpg_options = {'quality': 75,
+               'optimize': True,
+               'progressive': True}
 
 thumb_size = (280, 210)
 # Attribute of Album objects which is used to sort medias (eg 'title'). To sort
@@ -36,20 +35,10 @@ thumb_size = (280, 210)
 # Reverse sort for medias
 # medias_sort_reverse = False
 
-# Filter directories and files.
-# The settings take a list of patterns matched with the fnmatch module on the
-# path relative to the source directory:
-# http://docs.python.org/2/library/fnmatch.html
 ignore_directories = []
 ignore_files = []
 
-# -------------
-# Miscellaneous
-# -------------
-
-# Use CDN for assets (Google fonts, JQuery).
-# If False some fonts may not be available.
-# use_assets_cdn = True
+use_assets_cdn = False
 
 # A list of links (tuples (title, URL))
 # links = [('Example link', 'http://example.org'),
