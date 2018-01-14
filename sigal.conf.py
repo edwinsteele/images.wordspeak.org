@@ -13,28 +13,13 @@ img_size = (1600, 1200)
 show_map = True
 
 # If True, EXIF data from the original image is copied to the resized image
-# copy_exif_data = False
+copy_exif_data = False
 
 jpg_options = {'quality': 75,
                'optimize': True,
                'progressive': True}
 
 thumb_size = (280, 210)
-# Attribute of Album objects which is used to sort medias (eg 'title'). To sort
-# on a metadata key, use 'meta.key'.
-# albums_sort_attr = 'name'
-
-# Reverse sort for albums
-# albums_sort_reverse = False
-
-# Attribute of Media objects which is used to sort medias. 'date' can be used
-# to sort with EXIF dates, and 'meta.key' to sort on a metadata key (which then
-# must exist for all images).
-# medias_sort_attr = 'filename'
-
-# Reverse sort for medias
-# medias_sort_reverse = False
-
 ignore_directories = []
 ignore_files = []
 
