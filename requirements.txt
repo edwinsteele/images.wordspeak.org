@@ -5,7 +5,7 @@
 #    pip-compile --output-file requirements.txt requirements.in
 #
 blinker==1.4              # via sigal
-click==6.7                # via sigal
+click==6.7
 jinja2==2.10              # via sigal
 markdown==2.6.11          # via sigal
 markupsafe==1.0           # via jinja2
