@@ -3,9 +3,11 @@
 
 from pathlib import Path
 import os
+import subprocess
 import click
 
 MAX_NUMERIC_STR_LEN = 3
+SITE_BASE = os.path.dirname(__file__)
 
 
 @click.group()
@@ -16,7 +18,7 @@ def cli():
 @cli.command()
 def fix_image_naming():
     """pad image names with leading zeros to allow sigal sorting"""
-    pictures_dir = Path("pictures")
+    pictures_dir = Path(os.path.join(SITE_BASE, "pictures"))
     images = \
         list(pictures_dir.glob("*/*.JPG")) + \
         list(pictures_dir.glob("*/*.jpg"))
@@ -38,6 +40,20 @@ def fix_image_naming():
 def build():
     """Build the site using nikola"""
     subprocess.check_call(["nikola", "build"], cwd=SITE_BASE)
+
+
+@cli.command()
+def sync():
+    """Deploy the site"""
+    args = [
+        "rsync",
+        "--ignore-times",
+        "--delete",
+        "-av",
+        "./_build/",
+        "gemini.wordspeak.org:Sites/images.wordspeak.org",
+    ]
+    subprocess.check_call(args, cwd=SITE_BASE)
 
 
 if __name__ == "__main__":
