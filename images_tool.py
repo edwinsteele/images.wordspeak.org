@@ -25,12 +25,13 @@ def fix_image_naming():
     for image in images:
         filename_no_suffix, _, suffix = os.path.basename(image).rpartition(".")
         try:
-            if len(filename_no_suffix) <= MAX_NUMERIC_STR_LEN:
+            if len(filename_no_suffix) < MAX_NUMERIC_STR_LEN:
                 # might need to pad
                 fns_as_int = int(filename_no_suffix)
                 new_path = "%s/%03d.%s" % (os.path.dirname(image),
                                            fns_as_int,
                                            suffix)
+                print("Renaming %s to %s" % (image, new_path))
                 image.rename(new_path)
         except ValueError:
             print("Unable to parse %s as an int" % (filename_no_suffix,))
@@ -49,6 +50,7 @@ def sync():
         "rsync",
         "--ignore-times",
         "--delete",
+        "--filter=protect .well-known",
         "-av",
         "./_build/",
         "gemini.wordspeak.org:Sites/images.wordspeak.org",
