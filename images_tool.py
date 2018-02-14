@@ -39,8 +39,8 @@ def fix_image_naming():
 
 @cli.command()
 def build():
-    """Build the site using nikola"""
-    subprocess.check_call(["nikola", "build"], cwd=SITE_BASE)
+    """Build the site using sigal"""
+    subprocess.check_call(["sigal", "build"], cwd=SITE_BASE)
 
 
 @cli.command()
