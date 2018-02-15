@@ -25,14 +25,8 @@ ignore_files = []
 
 use_assets_cdn = False
 
-# A list of links (tuples (title, URL))
-# links = [('Example link', 'http://example.org'),
-#          ('Another link', 'http://example.org')]
-
-# List of files to copy from the source directory to the destination.
-# A symbolic link is used if ``orig_link`` is set to True (see above).
-# files_to_copy = (('extra/robots.txt', 'robots.txt'),
-#                  ('extra/favicon.ico', 'favicon.ico'),)
+links = [('Wordspeak', 'https://www.wordspeak.org'),]
+files_to_copy = (('extra/favicon.ico', 'favicon.ico'),)
 
 # --------
 # Plugins
