@@ -26,7 +26,8 @@ ignore_files = []
 use_assets_cdn = False
 
 links = [('Wordspeak', 'https://www.wordspeak.org'),]
-files_to_copy = (('extra/favicon.ico', 'favicon.ico'),)
+files_to_copy = (('extra/favicon.ico', 'favicon.ico'),
+                ('extra/robots.txt', 'robots.txt'))
 
 # --------
 # Plugins
@@ -41,11 +42,3 @@ files_to_copy = (('extra/favicon.ico', 'favicon.ico'),)
 
 # Add a copyright text on the image (default: '')
 # copyright = "© An example copyright message"
-
-# Adjust the image after resizing it. A default value of 1.0 leaves the images
-# untouched.
-# adjust_options = {'color': 1.0,
-#                   'brightness': 1.0,
-#                   'contrast': 1.0,
-#                   'sharpness': 1.0}
-
