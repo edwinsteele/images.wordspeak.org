@@ -13,10 +13,10 @@ img_size = (1600, 1200)
 show_map = True
 
 # If True, EXIF data from the original image is copied to the resized image
-copy_exif_data = False
+copy_exif_data = True
+autorotate_images = False
 
-jpg_options = {'quality': 75,
-               'optimize': True,
+jpg_options = {'quality': 100,
                'progressive': True}
 
 thumb_size = (280, 210)
