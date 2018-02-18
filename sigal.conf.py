@@ -11,6 +11,7 @@ author = 'Edwin Steele'
 
 img_size = (1600, 1200)
 show_map = True
+keep_orig = True
 
 # If True, EXIF data from the original image is copied to the resized image
 copy_exif_data = True
