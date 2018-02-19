@@ -41,10 +41,19 @@ def fix_image_naming():
 def build():
     """Build the site using sigal"""
     subprocess.check_call(["sigal", "build"], cwd=SITE_BASE)
+    subprocess.check_call(["find", "_build", "-name", "*.css", "-exec",
+                           "csso", "-i", "{}", "-o", "{}", ";"],
+                          cwd=SITE_BASE)
+    subprocess.check_call(["find", "_build", "-name", "*.js", "-exec",
+                           "uglifyjs", "{}", "-o", "{}", ";"],
+                          cwd=SITE_BASE)
     proc = subprocess.run(["imageOptim", "-d", "_build"],
                           stdout=subprocess.PIPE, cwd=SITE_BASE)
     print(proc.stdout.decode("utf-8"))
-    # add copyright information with exiftool
+    # Add copyright and licence information with exiftool
+    # http://photometadata.org/META-Resources-Field-Guide-to-Metadata#Copyright%20Status
+    # Copyright Notice
+    # Rights Usage Terms
 
 
 @cli.command()
