@@ -56,6 +56,7 @@ def sync():
         "--delete",
         "--filter=protect .well-known",
         "-av",
+        "--compress",
         "./_build/",
         "gemini.wordspeak.org:Sites/images.wordspeak.org",
     ]
