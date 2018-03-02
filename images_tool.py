@@ -67,7 +67,7 @@ def sync():
         "-av",
         "--compress",
         "./_build/",
-        "gemini.wordspeak.org:Sites/images.wordspeak.org",
+        "images.wordspeak.org:Sites/images.wordspeak.org",
     ]
     subprocess.check_call(args, cwd=SITE_BASE)
 
