@@ -20,7 +20,6 @@ autorotate_images = False
 jpg_options = {'quality': 100,
                'progressive': True}
 
-thumb_size = (280, 210)
 ignore_directories = []
 ignore_files = []
 
