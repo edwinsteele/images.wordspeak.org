@@ -11,4 +11,4 @@ markdown==2.6.11          # via sigal
 markupsafe==1.0           # via jinja2
 pilkit==2.0               # via sigal
 pillow==5.0.0             # via sigal
-sigal==1.3.0
+sigal
