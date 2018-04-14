@@ -15,7 +15,6 @@ def cli():
     click.echo("Starting wordspeak tool")
 
 
-@cli.command()
 def fix_image_naming():
     """pad image names with leading zeros to allow sigal sorting"""
     pictures_dir = Path(os.path.join(SITE_BASE, "pictures"))
@@ -40,6 +39,7 @@ def fix_image_naming():
 @cli.command()
 def build():
     """Build the site using sigal"""
+    fix_image_naming()
     subprocess.check_call(["sigal", "build"], cwd=SITE_BASE)
     subprocess.check_call(["find", "_build", "-name", "*.css", "-exec",
                            "csso", "-i", "{}", "-o", "{}", ";"],
