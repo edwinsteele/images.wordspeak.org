@@ -30,26 +30,31 @@ def fix_image_naming():
                 new_path = "%s/%03d.%s" % (os.path.dirname(image),
                                            fns_as_int,
                                            suffix)
-                print("Renaming %s to %s" % (image, new_path))
+                click.echo("Renaming %s to %s" % (image, new_path))
                 image.rename(new_path)
         except ValueError:
-            print("Unable to parse %s as an int" % (filename_no_suffix,))
+            click.secho("Unable to parse %s as an int" % (filename_no_suffix,),
+                       bold=True, fg='red')
 
 
 @cli.command()
 def build():
     """Build the site using sigal"""
+    click.echo("Fixing image names if necessary")
     fix_image_naming()
     subprocess.check_call(["sigal", "build"], cwd=SITE_BASE)
+    click.echo("Optimising CSS")
     subprocess.check_call(["find", "_build", "-name", "*.css", "-exec",
                            "csso", "-i", "{}", "-o", "{}", ";"],
                           cwd=SITE_BASE)
+    click.echo("Optimising javascript")
     subprocess.check_call(["find", "_build", "-name", "*.js", "-exec",
                            "uglifyjs", "{}", "-o", "{}", ";"],
                           cwd=SITE_BASE)
+    click.echo("Optimising images")
     proc = subprocess.run(["imageOptim", "-d", "_build"],
                           stdout=subprocess.PIPE, cwd=SITE_BASE)
-    print(proc.stdout.decode("utf-8"))
+    click.echo(proc.stdout.decode("utf-8"))
     # Add copyright and licence information with exiftool
     # http://photometadata.org/META-Resources-Field-Guide-to-Metadata#Copyright%20Status
     # Copyright Notice
