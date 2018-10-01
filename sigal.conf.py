@@ -29,6 +29,8 @@ links = [('Wordspeak', 'https://www.wordspeak.org'),]
 files_to_copy = (('extra/favicon.ico', 'favicon.ico'),
                 ('extra/robots.txt', 'robots.txt'))
 
+#leaflet_provider = 'Stamen.Terrain'
+#leaflet_provider = 'Stamen.TonerLite'
 # --------
 # Plugins
 # --------
