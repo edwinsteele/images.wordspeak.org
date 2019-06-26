@@ -12,6 +12,7 @@ SITE_BASE = os.path.dirname(__file__)
 
 @click.group()
 def cli():
+    """entry point"""
     click.echo("Starting wordspeak tool")
 
 
@@ -34,7 +35,8 @@ def fix_image_naming():
                 image.rename(new_path)
         except ValueError:
             click.secho("Unable to parse %s as an int" % (filename_no_suffix,),
-                       bold=True, fg='red')
+                        bold=True, fg='red')
+
 
 
 @cli.command()
@@ -51,10 +53,16 @@ def build():
     subprocess.check_call(["find", "_build", "-name", "*.js", "-exec",
                            "uglifyjs", "{}", "-o", "{}", ";"],
                           cwd=SITE_BASE)
-    click.echo("Optimising images")
-    proc = subprocess.run(["imageOptim", "-d", "_build"],
-                          stdout=subprocess.PIPE, cwd=SITE_BASE)
-    click.echo(proc.stdout.decode("utf-8"))
+    # ImageOptim cli blows up when too many images are found for compression
+    #  so let's batch them up
+    click.echo("Optimising jpg images")
+    build_dir = Path(SITE_BASE, "_build")
+    for subdir in build_dir.glob("*"):
+        if not subdir.is_dir():
+            continue
+        proc = subprocess.run(["imageoptim", "."], stdout=subprocess.PIPE, cwd=subdir)
+        click.echo(proc.stdout.decode("utf-8"))
+
     # Add copyright and licence information with exiftool
     # http://photometadata.org/META-Resources-Field-Guide-to-Metadata#Copyright%20Status
     # Copyright Notice
