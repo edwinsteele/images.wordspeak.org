@@ -54,14 +54,23 @@ def build():
                            "uglifyjs", "{}", "-o", "{}", ";"],
                           cwd=SITE_BASE)
     # ImageOptim cli blows up when too many images are found for compression
-    #  so let's batch them up
-    click.echo("Optimising jpg images")
+    #  so let's batch by directory
+    # https://github.com/JamieMason/ImageOptim-CLI/issues/173
+    click.echo("Optimising images")
     build_dir = Path(SITE_BASE, "_build")
     for subdir in build_dir.glob("*"):
         if not subdir.is_dir():
             continue
+        click.echo(".", nl=False)
         proc = subprocess.run(["imageoptim", "."], stdout=subprocess.PIPE, cwd=subdir)
-        click.echo(proc.stdout.decode("utf-8"))
+        lines = proc.stdout.decode("utf-8").split("\n")
+        for line in lines:
+            if not line or \
+                    "Running ImageOptim" in line or \
+                    "No size savings" in line or \
+                    "Finished" in line:
+                continue
+            click.echo(line)
 
     # Add copyright and licence information with exiftool
     # http://photometadata.org/META-Resources-Field-Guide-to-Metadata#Copyright%20Status
