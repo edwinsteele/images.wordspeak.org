@@ -82,14 +82,13 @@ def build():
 def sync():
     """Deploy the site"""
     args = [
-        "rsync",
-        "--ignore-times",
-        "--delete",
-        "--filter=protect .well-known",
-        "-av",
-        "--compress",
-        "./_build/",
-        "images.wordspeak.org:Sites/images.wordspeak.org",
+            "aws",
+            "--profile=wordspeak",
+            "s3",
+            "sync",
+            "--delete",
+            "./_build",
+            "s3://images-wordspeak-org"
     ]
     subprocess.check_call(args, cwd=SITE_BASE)
 
