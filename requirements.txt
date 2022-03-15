@@ -4,26 +4,53 @@
 #
 #    pip-compile
 #
-awscli==1.18.147          # via -r requirements.in
-blinker==1.4              # via sigal
-botocore==1.18.6          # via awscli, s3transfer
-click==7.1.2              # via -r requirements.in, sigal
-colorama==0.4.3           # via awscli
-docutils==0.15.2          # via awscli
-importlib-metadata==2.0.0  # via markdown
-jinja2==2.11.2            # via sigal
-jmespath==0.10.0          # via botocore
-markdown==3.2.2           # via sigal
-markupsafe==1.1.1         # via jinja2
-natsort==7.0.1            # via sigal
-pilkit==2.0               # via sigal
-pillow==7.2.0             # via sigal
-pyasn1==0.4.8             # via rsa
-python-dateutil==2.8.1    # via botocore
-pyyaml==5.3.1             # via awscli
-rsa==4.5                  # via awscli
-s3transfer==0.3.3         # via awscli
-sigal==2.1.1              # via -r requirements.in
-six==1.15.0               # via python-dateutil
-urllib3==1.25.10          # via botocore
-zipp==3.2.0               # via importlib-metadata
+awscli==1.18.147
+    # via -r requirements.in
+blinker==1.4
+    # via sigal
+botocore==1.18.6
+    # via
+    #   awscli
+    #   s3transfer
+click==7.1.2
+    # via
+    #   -r requirements.in
+    #   sigal
+colorama==0.4.3
+    # via awscli
+docutils==0.15.2
+    # via awscli
+importlib-metadata==2.0.0
+    # via markdown
+jinja2==2.11.2
+    # via sigal
+jmespath==0.10.0
+    # via botocore
+markdown==3.2.2
+    # via sigal
+markupsafe==1.1.1
+    # via jinja2
+natsort==7.0.1
+    # via sigal
+pilkit==2.0
+    # via sigal
+pillow==9.0.1
+    # via sigal
+pyasn1==0.4.8
+    # via rsa
+python-dateutil==2.8.1
+    # via botocore
+pyyaml==5.3.1
+    # via awscli
+rsa==4.5
+    # via awscli
+s3transfer==0.3.3
+    # via awscli
+sigal==2.1.1
+    # via -r requirements.in
+six==1.15.0
+    # via python-dateutil
+urllib3==1.25.10
+    # via botocore
+zipp==3.2.0
+    # via importlib-metadata
