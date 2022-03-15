@@ -81,14 +81,14 @@ def build():
 @cli.command()
 def sync():
     """Deploy the site"""
+
     args = [
-            "aws",
-            "--profile=wordspeak",
-            "s3",
-            "sync",
-            "--delete",
-            "./_build",
-            "s3://images-wordspeak-org"
+        "rsync",
+        "--delete",
+        "-av",
+        "--rsync-path=/usr/bin/openrsync",
+        "./_build/",
+        "images.wordspeak.org:/var/www/htdocs/images.wordspeak.org",
     ]
     subprocess.check_call(args, cwd=SITE_BASE)
 
