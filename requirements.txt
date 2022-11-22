@@ -34,7 +34,7 @@ natsort==7.0.1
     # via sigal
 pilkit==2.0
     # via sigal
-pillow==9.0.1
+pillow==9.3.0
     # via sigal
 pyasn1==0.4.8
     # via rsa
